@@ -18,8 +18,12 @@ public class Option {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 
 	@NotBlank
 	private String value;
+
+	public Option(String value) {
+		this.value = value;
+	}
 }

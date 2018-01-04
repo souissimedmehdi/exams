@@ -5,12 +5,12 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.brother.exams.model.dto.QuestionDTO;
 import com.brother.exams.service.QuestionService;
 
-@Repository
+@Service
 public class QuestionServiceImpl implements QuestionService{
 	
 	@Autowired
