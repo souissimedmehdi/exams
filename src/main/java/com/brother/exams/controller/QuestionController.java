@@ -18,6 +18,6 @@ public class QuestionController {
 	@GetMapping("/questions")
 	public List<QuestionDTO> getAllQuestions() {
 		return questionService.getAllQuestions();
-	}
+	}	
 
 }
