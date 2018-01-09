@@ -17,20 +17,27 @@ import lombok.Setter;
 @Table(name = "question")
 @Getter
 @Setter
-public class Question{
-	
+public class Question {
+
 	@Id
 	@GeneratedValue
 	private Integer id;
-	
+
 	@NotBlank
 	private String content;
-	
+
 	@OneToMany
 	private List<Option> optionList;
 
 	@OneToMany
 	private List<Option> correctOptionList;
-	
+
 	private Boolean multiAnswer;
+
+	public void updateFields(Question question) {
+		content = question.content;
+		optionList = question.getOptionList();
+		correctOptionList = question.getCorrectOptionList();
+		multiAnswer = question.getMultiAnswer();
+	}
 }

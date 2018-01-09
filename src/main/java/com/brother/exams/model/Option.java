@@ -8,12 +8,14 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotBlank;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "option")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Option {
 
 	@Id
