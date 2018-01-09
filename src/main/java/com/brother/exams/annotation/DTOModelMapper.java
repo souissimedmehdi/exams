@@ -23,6 +23,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 
+import com.brother.exams.exception.TechnicalException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DTOModelMapper extends RequestResponseBodyMethodProcessor {
@@ -69,7 +70,7 @@ public class DTOModelMapper extends RequestResponseBodyMethodProcessor {
 		return super.readWithMessageConverters(inputMessage, parameter, dto.value());
 	}
 
-	private Object getEntityId(@NotNull Object dto) {
+	private Object getEntityId(@NotNull Object dto) throws TechnicalException {
 		Field field = Stream.of(dto.getClass().getDeclaredFields())
 				.filter(f -> Objects.nonNull(f.getAnnotation(Id.class))).findFirst().orElse(null);
 		if (field != null) {
@@ -77,7 +78,7 @@ public class DTOModelMapper extends RequestResponseBodyMethodProcessor {
 				field.setAccessible(true);
 				return field.get(dto);
 			} catch (IllegalAccessException e) {
-				throw new RuntimeException(e);
+				throw new TechnicalException(e);
 			}
 		}
 		return null;
